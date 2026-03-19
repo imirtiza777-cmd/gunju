@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For My Gunjuu 💖</title>
+
+  <!-- IMPORTANT FOR MOBILE -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .screen {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 14px;
+      width: 100%;
+      max-width: 300px;
+      border-radius: 12px;
+      border: none;
+      background: #ff6f91;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    input {
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      width: 80%;
+      max-width: 250px;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    #main { display: none; }
+
+    .heart {
+      position: absolute;
+      font-size: 16px;
+      animation: float 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-10vh); }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- LOCK SCREEN -->
+<div class="screen" id="lock">
+  <h1>Hey Gunjuu 💖</h1>
+  <p>Enter your special name 👀</p>
+  <input type="password" id="pass" placeholder="Hint: nickname">
+  <button onclick="check()">Unlock 🎁</button>
+</div>
+
+<!-- MAIN -->
+<div class="screen" id="main">
+  <h1>Happy Birthday Bisma Jee 🎉</h1>
+  <h2>Meri Chand se Pyari Gurdiya 🎉</h2>
+
+  <div class="card">
+    <p id="stepText">Tap below… I made something for you 🥺</p>
+    <button onclick="nextStep()">Start 💌</button>
+  </div>
+
+  <button onclick="playMusic()">Play Music 🎶</button>
+</div>
+
+<audio id="music" loop>
+  <source src="C:\Users\LENOVO\Downloads\atlasaudio-birthday-491022.mp3"type="audio/mpeg">
+</audio>
+
+<script>
+  function check() {
+    if (document.getElementById("pass").value.toLowerCase() === "gunjuu") {
+      document.getElementById("lock").style.display = "none";
+      document.getElementById("main").style.display = "flex";
+    } else {
+      alert("Hint: what I lovingly call you 😌");
+    }
+  }
+
+  const messages = [
+    "So… hi my Gunjuu 💖",
+    "I wanted to do something different for you 😊",
+    "Because you’re not just anyone to me…",
+    "You’re my Gurdiyaa 🧸",
+    "My best friend… and someone really special 💫",
+    "You make everything better just by being there 🥺",
+    "I hope today makes you smile a lot 😊",
+    "Because you deserve the happiest birthday ever 🎂",
+    "And… I’m really lucky to have you ❤️",
+    "Maybe… more than just a best friend 👀💖"
+  ];
+
+  let index = 0;
+
+  function nextStep() {
+    if (index < messages.length) {
+      document.getElementById("stepText").innerHTML = messages[index];
+      index++;
+    }
+  }
+
+  function playMusic() {
+    document.getElementById("music").play();
+  }
+
+  // Floating hearts (lighter for mobile)
+  setInterval(() => {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤️";
+    h.style.left = Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+  }, 700);
+</script>
+
+</body>
+</html>
