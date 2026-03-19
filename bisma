@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For My Gunjuu 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #333;
+      overflow: hidden;
+    }
+
+    .screen {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #main { display: none; }
+
+    h1 {
+      font-size: 45px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      width: 75%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: none;
+      background: #ff6f91;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 18px;
+      animation: float 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-10vh); }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- LOCK SCREEN -->
+<div class="screen" id="lock">
+  <h1>Hey Gunjuu 💖</h1>
+  <p>Enter your special name 👀</p>
+  <input type="password" id="pass">
+  <button onclick="check()">Unlock 🎁</button>
+</div>
+
+<!-- MAIN -->
+<div class="screen" id="main">
+  <h1>Happy Birthday Bisma Jee 🎉</h1>
+
+  <div class="card">
+    <p id="stepText">Click below… I made something for you 🥺</p>
+    <button onclick="nextStep()">Start 💌</button>
+  </div>
+
+  <button onclick="playMusic()">Play Music 🎶</button>
+</div>
+
+<audio id="music" loop>
+  <source src="YOUR_MUSIC_LINK_HERE.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  function check() {
+    if (document.getElementById("pass").value.toLowerCase() === "gunjuu") {
+      document.getElementById("lock").style.display = "none";
+      document.getElementById("main").style.display = "flex";
+    } else {
+      alert("Hint: what I call you 😌");
+    }
+  }
+
+  const messages = [
+    "So… hi my Gunjuu 💖",
+    "I wanted to do something different for you 😊",
+    "Because you’re not just anyone to me…",
+    "You’re my Gurdiyaa 🧸",
+    "My best friend… and someone really special 💫",
+    "You make everything better just by being there 🥺",
+    "I hope today makes you smile a lot 😊",
+    "Because you deserve the happiest birthday ever 🎂",
+    "And… I’m really really lucky to have you ❤️",
+    "Maybe… more than just a best friend 👀💖"
+  ];
+
+  let index = 0;
+
+  function nextStep() {
+    if (index < messages.length) {
+      document.getElementById("stepText").innerHTML = messages[index];
+      index++;
+    }
+  }
+
+  function playMusic() {
+    document.getElementById("music").play();
+  }
+
+  // Floating hearts
+  setInterval(() => {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤️";
+    h.style.left = Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+  }, 500);
+</script>
+
+</body>
+</html>
